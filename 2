@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+ 
+
+void remove(char *arr, char ch)
+{
+    const char *old = arr;
+    while(*old)
+    {
+        if(*old != ch){
+            *arr = *old;
+            ++arr;
+        }
+        ++old;
+    }
+    *arr = '\0';
+}
+int main()
+{
+    char str[100] = "ssstssrisstngsss";
+    remove(str,'s');
+    cout << str<< endl;
+    return 0;
+}
