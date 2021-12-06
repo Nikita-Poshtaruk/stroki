@@ -1,0 +1,26 @@
+#include <iostream>
+#include <string>
+using namespace std;
+void insert(wstring& line, const wchar_t letter, const wstring::size_type pos) {
+if (line.length() < pos) return;
+if (line.length() == pos) line += letter;
+else {
+wstring prefix(line.begin(), line.begin() + pos);
+prefix += letter;
+wstring ending(line.begin() + pos, line.end());
+prefix += ending;
+line = prefix;
+}
+}
+int main() {
+wcout.imbue(locale(".OCP"));
+wcin.imbue(locale(".OCP"));
+wstring line(L"Оловяный");
+wcout << line << endl;
+auto letter(L'н');
+wstring::size_type pos = 6;
+wcout << letter << L" : " << pos << endl;
+insert(line, letter, pos);
+wcout << line << endl;
+wcin.get();
+}
